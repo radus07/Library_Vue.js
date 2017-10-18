@@ -6,10 +6,10 @@
 
 <script>
 export default {
-  name: 'Home',
+  name: 'Register',
   data () {
     return {
-      msg: 'Welcome to Home page'
+      msg: 'Welcome to Register page'
     }
   }
 }

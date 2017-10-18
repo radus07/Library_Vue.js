@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import webRouter from './web-router'
+import webRouter from '../web/router/web-router'
 Vue.use(Router)
 
 export default new Router({
