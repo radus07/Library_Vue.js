@@ -1,44 +1,84 @@
 <template>
-  <v-container grid-list-md text-lg-center>
-    <v-layout row wrap>
-      <v-flex lg12>
-        <v-card dark color="primary">
-          <v-card-text class="px-0">12</v-card-text>
-        </v-card>
-      </v-flex>
-      <v-flex lg6 v-for="i in 2" :key="i">
-        <v-card dark color="secondary">
-          <v-card-text class="px-0">6</v-card-text>
-        </v-card>
-      </v-flex>
-      <v-flex lg4 v-for="i in 3" :key="i">
-        <v-card dark color="primary">
-          <v-card-text class="px-0">4</v-card-text>
-        </v-card>
-      </v-flex>
-      <v-flex lg3 v-for="i in 4" :key="i">
-        <v-card dark color="secondary">
-          <v-card-text class="px-0">3</v-card-text>
-        </v-card>
-      </v-flex>
-      <v-flex lg2 v-for="i in 6" :key="i">
-        <v-card dark color="primary">
-          <v-card-text class="px-0">2</v-card-text>
-        </v-card>
-      </v-flex>
-      <v-flex lg1 v-for="i in 12" :key="i">
-        <v-card dark color="secondary">
-          <v-card-text class="px-0">1</v-card-text>
-        </v-card>
-      </v-flex>
-    </v-layout>
-  </v-container>
+  <v-app id="inspire">
+    <v-toolbar color="blue darken-3" dark app clipped-left fixed>
+      <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
+        <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+        Google Contacts
+      </v-toolbar-title>
+      <v-text-field solo prepend-icon="search" placeholder="Search"></v-text-field>
+      <v-spacer></v-spacer>
+      <v-btn icon>
+        <v-icon>apps</v-icon>
+      </v-btn>
+      <v-btn icon>
+        <v-icon>notifications</v-icon>
+      </v-btn>
+      <v-btn icon large>
+        <v-avatar size="32px" tile>
+          <img src="https://vuetifyjs.com/static/doc-images/logo.svg" alt="Vuetify">
+        </v-avatar>
+      </v-btn>
+    </v-toolbar>
+    <main>
+      <v-content>
+        <v-container fluid fill-height>
+          <v-layout justify-center align-center>
+            <v-tooltip right>
+              <v-btn icon large :href="source" target="_blank" slot="activator">
+                <v-icon large>code</v-icon>
+              </v-btn>
+              <span>Source</span>
+            </v-tooltip>
+          </v-layout>
+        </v-container>
+      </v-content>
+    </main>
+  </v-app>
 </template>
 
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data: () => ({
+    dialog: false,
+    drawer: true,
+    items: [
+      { icon: 'contacts', text: 'Contacts' },
+      { icon: 'history', text: 'Frequently contacted' },
+      { icon: 'content_copy', text: 'Duplicates' },
+      {
+        icon: 'keyboard_arrow_up',
+        'icon-alt': 'keyboard_arrow_down',
+        text: 'Labels',
+        model: true,
+        children: [
+          { icon: 'add', text: 'Create label' }
+        ]
+      },
+      {
+        icon: 'keyboard_arrow_up',
+        'icon-alt': 'keyboard_arrow_down',
+        text: 'More',
+        model: false,
+        children: [
+          { text: 'Import' },
+          { text: 'Export' },
+          { text: 'Print' },
+          { text: 'Undo changes' },
+          { text: 'Other contacts' }
+        ]
+      },
+      { icon: 'settings', text: 'Settings' },
+      { icon: 'chat_bubble', text: 'Send feedback' },
+      { icon: 'help', text: 'Help' },
+      { icon: 'phonelink', text: 'App downloads' },
+      { icon: 'keyboard', text: 'Go to the old version' }
+    ]
+  }),
+  props: {
+    source: String
+  }
 }
 </script>
 
@@ -60,7 +100,10 @@ body {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: #2c3e50;
+    width: 100%;
+    max-width: 1170px;
+    margin: 0 auto;
+    background-color: silver
   }
 }
 </style>
