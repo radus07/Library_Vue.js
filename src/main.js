@@ -4,6 +4,9 @@ import Vue from 'vue'
 import Vuetify from 'vuetify'
 import App from './App'
 import router from './router/app-router'
+import VeeValidate from 'vee-validate'
+
+Vue.use(VeeValidate)
 
 Vue.config.productionTip = false
 Vue.use(Vuetify)

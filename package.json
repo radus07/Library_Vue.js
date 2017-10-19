@@ -11,8 +11,10 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "vee-validate": "^2.0.0-rc.19",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
+    "vuelidate": "^0.6.1",
     "vuetify": "^0.16.7"
   },
   "devDependencies": {
