@@ -4,7 +4,7 @@
       <router-link :to="{ name: 'web.home', }"><img src="https://qph.ec.quoracdn.net/main-qimg-050a22aa0cf612a61608b9c0d0cb13a2.webp" alt="logo" width="50px"></router-link>
       <v-spacer></v-spacer>
       <v-toolbar-items>
-        <v-btn flat exact :to="{ name: 'web.login' }">Login</v-btn>
+        <v-btn flat exact :to="{ name: 'web.sign_in' }">Sign In</v-btn>
         <v-btn flat :to="{ name: 'web.register' }">Register</v-btn>
       </v-toolbar-items>
     </v-toolbar>
@@ -32,16 +32,8 @@ export default {
   background-color: white;
 
   main {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    width: 100%;
-    height: 100%;
-    margin: 48px 0 0 0;
+    margin-top: 48px;
     background-color: white;
-
-    section {
-      width: 100%;
-    }
   }
 }
 </style>
