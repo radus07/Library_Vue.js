@@ -1,7 +1,7 @@
 {
-  "name": "initial-project",
+  "name": "library",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "A Vue.js project to manage the activity of a library",
   "author": "Radu Balan <radu.balan.97@gmail.com>",
   "private": true,
   "scripts": {
