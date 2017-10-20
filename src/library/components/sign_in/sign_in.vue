@@ -57,10 +57,10 @@
 <script>
 import { validationMixin } from 'vuelidate'
 import { required, maxLength } from 'vuelidate/lib/validators'
-const VALID_USER = {
-  username: 'user',
-  password: 'user'
-}
+import authService from '../../../service/authentication.service'
+// import myUserService from '../../../service/myUser.service'
+import { EventBus } from '../../temp'
+
 export default {
   mixins: [validationMixin],
   validations: {
@@ -81,14 +81,16 @@ export default {
       if (this.$v.$invalid) {
         this.$v.$touch()
       } else {
-        this.checkUser()
-          .then(result => {
-            this.hasErrors = false
-            console.log('success')
+        authService.checkAuthentication(this.user)
+          .then((response) => {
+            authService.loginUser(response)
+              .then(() => {
+                EventBus.$emit('login')
+                this.$router.push({name: 'library.home'})
+              })
           })
           .catch(() => {
             this.hasErrors = true
-            console.log('error')
           })
       }
     },
@@ -96,15 +98,6 @@ export default {
       this.$v.$reset()
       this.user = {}
       this.hasErrors = false
-    },
-    checkUser () {
-      return new Promise((resolve, reject) => {
-        if (this.user.username === VALID_USER.username && this.user.password === VALID_USER.password) {
-          resolve(true)
-        } else {
-          reject(new Error('invalid username or password'))
-        }
-      })
     }
   },
   computed: {
