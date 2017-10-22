@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import myUserService from '../../../service/myUser.service'
+import { myUserService } from '../../../service/myUser.service'
 import authService from '../../../service/authentication.service'
 import { EventBus } from '../../temp'
 
@@ -33,7 +33,6 @@ export default {
       authService.logoutUser()
       this.setUser()
       this.$router.push({name: 'library.sign_in'})
-      EventBus.$emit('logout')
     }
   },
   created () {

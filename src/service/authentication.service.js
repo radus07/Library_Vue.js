@@ -1,4 +1,4 @@
-import myUserService from './myUser.service'
+import { myUserService } from './myUser.service'
 
 const VALID_USER = {
   username: 'user',

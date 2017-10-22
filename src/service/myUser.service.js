@@ -1,4 +1,4 @@
-export default {
+export var myUserService = {
   isLogged: (localStorage.getItem('user') !== null),
   getUser () {
     return new Promise((resolve, reject) => {
