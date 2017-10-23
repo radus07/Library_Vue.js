@@ -12,7 +12,7 @@
 
 <script>
 import { myUserService } from '../../../service/myUser.service'
-import authService from '../../../service/authentication.service'
+import { authService } from '../../../service/authentication.service'
 import { EventBus } from '../../temp'
 
 export default {

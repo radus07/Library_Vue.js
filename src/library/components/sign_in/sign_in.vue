@@ -57,8 +57,7 @@
 <script>
 import { validationMixin } from 'vuelidate'
 import { required, maxLength } from 'vuelidate/lib/validators'
-import authService from '../../../service/authentication.service'
-// import myUserService from '../../../service/myUser.service'
+import { authService } from '../../../service/authentication.service'
 import { EventBus } from '../../temp'
 
 export default {

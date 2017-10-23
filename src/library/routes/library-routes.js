@@ -4,7 +4,7 @@ import SignIn from '../components/sign_in/sign_in'
 import Register from '../components/register/register'
 // import { myUserService } from '../../service/myUser.service'
 
-const libraryRouter = [
+const libraryRoutes = [
   {
     path: '/',
     component: Library,
@@ -22,9 +22,14 @@ const libraryRouter = [
         component: SignIn,
         meta: { title: 'Sign in', authenticated: false }
       },
-      { path: 'register', name: 'library.register', component: Register, meta: { title: 'Register Page' } }
+      {
+        path: 'register',
+        name: 'library.register',
+        component: Register,
+        meta: { title: 'Register Page' }
+      }
     ]
   }
 ]
 
-export default libraryRouter
+export default libraryRoutes

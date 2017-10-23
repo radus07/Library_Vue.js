@@ -5,7 +5,7 @@ const VALID_USER = {
   password: 'user'
 }
 
-export default {
+export var authService = {
   checkAuthentication (user) {
     // Do httpRequest for checking if user with these credentials exists
     return new Promise((resolve, reject) => {
