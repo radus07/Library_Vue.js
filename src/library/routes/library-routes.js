@@ -2,7 +2,6 @@ import Library from '../components/library'
 import Home from '../components/home/home'
 import SignIn from '../components/sign_in/sign_in'
 import Register from '../components/register/register'
-// import { myUserService } from '../../service/myUser.service'
 
 const libraryRoutes = [
   {
@@ -26,7 +25,7 @@ const libraryRoutes = [
         path: 'register',
         name: 'library.register',
         component: Register,
-        meta: { title: 'Register Page' }
+        meta: { title: 'Register Page', authenticated: false }
       }
     ]
   }

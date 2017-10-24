@@ -58,7 +58,6 @@
 import { validationMixin } from 'vuelidate'
 import { required, maxLength } from 'vuelidate/lib/validators'
 import { authService } from '../../../service/authentication.service'
-import { EventBus } from '../../temp'
 
 export default {
   mixins: [validationMixin],
@@ -84,7 +83,7 @@ export default {
           .then((response) => {
             authService.loginUser(response)
               .then(() => {
-                EventBus.$emit('login')
+                this.$store.commit('setUser')
                 this.$router.push({name: 'library.home'})
               })
           })

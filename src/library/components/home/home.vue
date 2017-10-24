@@ -19,38 +19,12 @@
           </v-card>
         </v-flex>
       </v-layout>
-      <v-layout>
-        <v-flex xs12>
-          <div>
-            <p>{{ user }}</p>
-          </div>
-        </v-flex>
-      </v-layout>
     </v-container>
   </v-content>
 </template>
 
 <script>
-import { myUserService } from '../../../service/myUser.service'
-
 export default {
-  name: 'Home',
-  data () {
-    return {
-      msg: 'Welcome to Home page',
-      user: {}
-    }
-  },
-  methods: {
-    setUser () {
-      myUserService.getUser()
-        .then((response) => {
-          this.user = response
-        })
-    }
-  },
-  created () {
-    this.setUser()
-  }
+  name: 'Home'
 }
 </script>

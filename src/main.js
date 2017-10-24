@@ -3,18 +3,19 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify'
 import App from './App'
-import router from './router/app-router'
 import VeeValidate from 'vee-validate'
-
-Vue.use(VeeValidate)
+import router from './router/app-router'
+import store from './store'
 
 Vue.config.productionTip = false
 Vue.use(Vuetify)
+Vue.use(VeeValidate)
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })
