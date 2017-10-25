@@ -11,8 +11,10 @@ var appRouter = new Router({
 })
 
 appRouter.beforeEach((to, from, next) => {
+  console.log('do')
   store.dispatch('auth/updateUserDetails')
     .then(() => {
+      setDocumentTitle(to)
       doGuard(to, from, next)
     })
 })
@@ -25,15 +27,22 @@ let doGuard = (to, from, next) => {
     if (user.isLogged) {
       next()
     } else {
+      // Alert user must be logged
       console.log('you must be logged')
+      setDocumentTitle(from)
       next({name: 'library.sign_in'})
     }
   } else {
     if (user.isLogged) {
+      // Alert user must be logged out
       console.log('you must be logged out')
       next({name: 'library.home'})
     } else {
       next()
     }
   }
+}
+
+let setDocumentTitle = (route) => {
+  document.title = route.meta.title
 }
