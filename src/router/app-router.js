@@ -11,7 +11,7 @@ var appRouter = new Router({
 })
 
 appRouter.beforeEach((to, from, next) => {
-  store.dispatch('updateUserDetails')
+  store.dispatch('auth/updateUserDetails')
     .then(() => {
       doGuard(to, from, next)
     })
@@ -20,7 +20,7 @@ appRouter.beforeEach((to, from, next) => {
 export default appRouter
 
 let doGuard = (to, from, next) => {
-  let user = store.getters.getUserDetails
+  let user = store.getters['auth/getUserDetails']
   if (to.meta.authenticated) {
     if (user.isLogged) {
       next()

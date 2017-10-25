@@ -16,13 +16,13 @@ export default {
   methods: {
     logout () {
       localStorage.removeItem('user')
-      this.$store.dispatch('updateUserDetails')
+      this.$store.dispatch('auth/updateUserDetails')
       this.$router.push({name: 'library.sign_in'})
     }
   },
   computed: {
     user () {
-      return this.$store.getters.getUserDetails
+      return this.$store.getters['auth/getUserDetails']
     }
   }
 }

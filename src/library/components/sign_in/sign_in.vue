@@ -83,7 +83,7 @@ export default {
           .then((response) => {
             authService.loginUser(response)
               .then(() => {
-                this.$store.commit('setUser')
+                this.$store.commit('auth/setUser')
                 this.$router.push({name: 'library.home'})
               })
           })
