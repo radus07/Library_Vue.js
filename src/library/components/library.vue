@@ -30,15 +30,3 @@ export default {
   }
 }
 </style>
-
-<style lang="scss">
-  .content {
-    max-width: 1185px;
-    margin: 0 auto;
-
-    .container {
-      max-width: 100%;
-    }
-  }
-</style>
-
