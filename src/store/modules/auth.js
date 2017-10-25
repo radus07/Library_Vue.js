@@ -1,4 +1,4 @@
-import { myUserService } from '../../service/myUser.service'
+import { myUserService } from '../../api/user.service'
 
 const state = {
   user: {}

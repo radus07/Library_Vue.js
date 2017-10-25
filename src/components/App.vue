@@ -9,7 +9,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../node_modules/vuetify/dist/vuetify.min.css';
+@import '../../node_modules/vuetify/dist/vuetify.min.css';
 * {
   margin: 0;
   padding: 0;

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import libraryRoutes from '../library/routes/library-routes'
-import store from '../store'
+import store from '../../store'
 
 Vue.use(Router)
 
@@ -11,7 +11,6 @@ var appRouter = new Router({
 })
 
 appRouter.beforeEach((to, from, next) => {
-  console.log('do')
   store.dispatch('auth/updateUserDetails')
     .then(() => {
       setDocumentTitle(to)
