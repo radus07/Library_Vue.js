@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import auth from './modules/auth'
 import library from './modules/library'
+import auth from './modules/auth'
 
 Vue.use(Vuex)
 

@@ -3,18 +3,9 @@
     <v-container grid-list-xs fill-height>
       <v-layout row wrap align-center>
         <v-flex xs12 sm4 offset-sm4>
-          <div class="error-content" v-if="hasErrors">
-            <v-list>
-              <v-list-tile>
-                <v-list-tile-avatar>
-                  <v-icon color="white">error</v-icon>
-                </v-list-tile-avatar>
-                <v-list-tile-content>
-                  <v-list-tile-title>Invalid username or password</v-list-tile-title>
-                </v-list-tile-content>
-              </v-list-tile>
-            </v-list>
-          </div>
+          <v-alert class="login-error" color="error" icon="error" value="true" v-if="hasErrors">
+            Invalid username or password
+          </v-alert>
           <v-card>
             <v-card-title style="background-color: #f5f5f5; color: rgba(0,0,0,.54)" primary-title>
               <h3 class="headline mb-0">Sign in</h3>
@@ -22,6 +13,9 @@
             <v-card-actions>
               <v-flex xl12>
                 <form @submit.prevent="submit()">
+                  <!-- 
+                    * Add more possibilities
+                   -->
                   <v-text-field
                     label="Username*"
                     v-model="user.username"
@@ -41,7 +35,6 @@
                     :type="showPassord ? 'text' : 'password'"
                     prepend-icon="lock"
                   ></v-text-field>
-
                   <v-btn :type="'submit'">Sign in</v-btn>
                   <v-btn @click="clear">reset</v-btn>
                 </form>
@@ -116,10 +109,16 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.error-content {
-  margin-top: -64px;
-  height: 64px;
+<style lang="scss" scoped>
+.content {
+  min-height: 404px;
+
+  .login-error {
+    margin-top: -64px;
+    .alert__icon.icon, .alert__dismissible .icon {
+      color: white
+    }
+  }
 
   ul.list {
     background-color: red;

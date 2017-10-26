@@ -1,5 +1,3 @@
-// import store from '../store'
-
 const VALID_USER = {
   username: 'user',
   password: 'user'
