@@ -4,7 +4,7 @@ export var myUserService = {
   getUser () {
     return new Promise((resolve, reject) => {
       // Do httpRequest and get user's details
-      (localStorage.getItem('user')) ? resolve({id: 1, username: 'user'}) : resolve()
+      (localStorage.getItem('user')) ? resolve({id: 1, username: 'user', name: 'Ali Abibu', email: 'user@user.com'}) : resolve()
     })
   }
 }

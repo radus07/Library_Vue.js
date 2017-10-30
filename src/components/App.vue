@@ -19,13 +19,7 @@ html, body {
   padding: 0;
   width: 100%;
   height: 100%;
+  overflow-y: hidden;
 }
-.content {
-    max-width: 1185px;
-    margin: 0 auto;
 
-    .container {
-      max-width: 100%;
-    }
-  }
 </style>

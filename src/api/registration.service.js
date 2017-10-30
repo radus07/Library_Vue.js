@@ -2,7 +2,7 @@ export var registrationService = {
   registerUser (user) {
     // Do httpRequest for inserting user in db
     return new Promise((resolve, reject) => {
-      let response = true
+      let response = false
       // If response is good send status ok
       if (response) resolve(true)
       // If response is bad send error

@@ -22,11 +22,24 @@ export default {
 
 <style lang="scss">
 #app {
+  height: 100%;
   background-color: white;
+  overflow-y: none;
 
   main {
+    height: calc(100% - 84px);
     margin-top: 48px;
     background-color: white;
+
+    .content {
+      overflow-y: auto;
+      max-width: 1185px;
+      margin: 0 auto;
+
+      .container {
+        max-width: 100%;
+      }
+    }
   }
 }
 </style>
