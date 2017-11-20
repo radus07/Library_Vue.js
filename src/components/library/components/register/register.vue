@@ -12,7 +12,7 @@
             </v-card-title>
             <v-card-actions>
               <form @submit.prevent="submit()">
-                <!-- 
+                <!--
                   * Add more fields and links
                   * Add more rules for fields
                  -->
@@ -77,9 +77,11 @@
                       ></v-text-field>
                     </v-flex>
                   </v-layout>
-                  <v-btn :type="'submit'">register</v-btn>
-                  <v-btn @click="clear">reset</v-btn>
-                </v-container grid-list-md>
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn :type="'submit'" color="primary">register</v-btn>
+                  </v-card-actions>
+                </v-container>
               </form>
             </v-card-actions>
           </v-card>
@@ -90,66 +92,67 @@
 </template>
 
 <script>
-import { registrationService } from '../../../../api/registration.service'
-import { authService } from '../../../../api/auth.service'
-export default {
-  name: 'Register',
-  data () {
-    return {
-      user: {},
-      hasErrors: false
-    }
-  },
-  methods: {
-    submit () {
-      this.$validator.validateAll()
-      if (this.$validator.errors.items.length === 0) {
-        // Call register method from service
-        registrationService.registerUser(this.user)
-          .then(() => {
-            // Authenticate user
-            let user = {
-              id: 2,
-              username: this.user.username
-            }
-            authService.loginUser(user)
-              .then(() => {
-                // Alert user is registered
-                console.log('you have registered')
-                this.$store.commit('auth/setUser')
-                this.$router.push({name: 'library.home'})
-              })
-          })
-          .catch(() => {
-            this.hasErrors = true
-          })
+  import { registrationService } from '../../../../api/registration.service'
+  import { authService } from '../../../../api/auth.service'
+
+  export default {
+    name: 'Register',
+    data () {
+      return {
+        user: {},
+        hasErrors: false
       }
     },
-    clear () {
-      this.user = {}
-      this.hasErrors = false
-      this.$validator.reset()
+    methods: {
+      submit () {
+        this.$validator.validateAll()
+        if (this.$validator.errors.items.length === 0) {
+          // Call register method from service
+          registrationService.registerUser(this.user)
+            .then(() => {
+              // Authenticate user
+              let user = {
+                id: 2,
+                username: this.user.username
+              }
+              authService.loginUser(user)
+                .then(() => {
+                  // Alert user is registered
+                  console.log('you have registered')
+                  this.$store.commit('auth/setUser')
+                  this.$router.push({name: 'library.home'})
+                })
+            })
+            .catch(() => {
+              this.hasErrors = true
+            })
+        }
+      },
+      clear () {
+        this.user = {}
+        this.hasErrors = false
+        this.$validator.reset()
+      }
     }
   }
-}
 </script>
 
 <style lang="scss" scoped>
-.content {
-  min-height: 637px;
+  .content {
+    min-height: 637px;
 
-  .register-error {
-    margin-top: -64px;
-    .alert__icon.icon, .alert__dismissible .icon {
-      color: white
+    .register-error {
+      margin-top: -64px;
+      .alert__icon.icon, .alert__dismissible .icon {
+        color: white
+      }
+    }
+
+    ul.list {
+      background-color: red;
+      li .list__tile__title {
+        color: white;
+      }
     }
   }
-
-  ul.list {
-    background-color: red;
-    li .list__tile__title {
-      color: white;
-    }
-  }
-}
 </style>

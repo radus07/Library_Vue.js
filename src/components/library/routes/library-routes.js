@@ -8,24 +8,24 @@ const libraryRoutes = [
     path: '/',
     component: Library,
     children: [
-      { path: '', redirect: { name: 'library.home' } },
+      {path: '', redirect: {name: 'library.home'}},
       {
         path: 'home',
         name: 'library.home',
         component: Home,
-        meta: { title: 'Home Page', authenticated: true }
+        meta: {title: 'Home Page'}
       },
       {
         path: 'sign_in',
         name: 'library.sign_in',
         component: SignIn,
-        meta: { title: 'Sign in', authenticated: false }
+        meta: {title: 'Sign in', authenticated: false}
       },
       {
         path: 'register',
         name: 'library.register',
         component: Register,
-        meta: { title: 'Register Page', authenticated: false }
+        meta: {title: 'Register Page', authenticated: false}
       }
     ]
   }

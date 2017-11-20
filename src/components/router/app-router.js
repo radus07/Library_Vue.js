@@ -5,7 +5,7 @@ import store from '../../store'
 
 Vue.use(Router)
 
-var appRouter = new Router({
+const appRouter = new Router({
   mode: 'history',
   routes: libraryRoutes
 })
