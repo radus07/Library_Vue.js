@@ -2,7 +2,7 @@
   <v-app>
     <toolbar></toolbar>
     <main>
-      <router-view/>
+      <router-view></router-view>
     </main>
     <page-footer></page-footer>
   </v-app>

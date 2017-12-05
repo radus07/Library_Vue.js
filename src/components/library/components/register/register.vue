@@ -106,32 +106,29 @@
     methods: {
       submit () {
         this.$validator.validateAll()
-        if (this.$validator.errors.items.length === 0) {
-          // Call register method from service
-          registrationService.registerUser(this.user)
-            .then(() => {
-              // Authenticate user
-              let user = {
-                id: 2,
-                username: this.user.username
-              }
-              authService.loginUser(user)
+          .then(() => {
+            if (this.$validator.errors.items.length === 0) {
+              // Call register method from service
+              registrationService.registerUser(this.user)
                 .then(() => {
-                  // Alert user is registered
-                  console.log('you have registered')
-                  this.$store.commit('auth/setUser')
-                  this.$router.push({name: 'library.home'})
+                  // Authenticate user
+                  let user = {
+                    id: 2,
+                    username: this.user.username
+                  }
+                  authService.loginUser(user)
+                    .then(() => {
+                      // Alert user is registered
+                      console.log('you have registered')
+                      this.$store.commit('auth/setUser')
+                      this.$router.push({name: 'library.home'})
+                    })
                 })
-            })
-            .catch(() => {
-              this.hasErrors = true
-            })
-        }
-      },
-      clear () {
-        this.user = {}
-        this.hasErrors = false
-        this.$validator.reset()
+                .catch(() => {
+                  this.hasErrors = true
+                })
+            }
+          })
       }
     }
   }

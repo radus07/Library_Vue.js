@@ -93,11 +93,6 @@
               this.hasErrors = true
             })
         }
-      },
-      clear () {
-        this.$v.$reset()
-        this.user = {}
-        this.hasErrors = false
       }
     },
     computed: {

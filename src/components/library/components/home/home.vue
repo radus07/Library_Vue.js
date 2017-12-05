@@ -1,22 +1,27 @@
 <template>
   <v-content>
     <v-container grid-list-lg>
-      <v-layout wrap>
-        <v-flex xs3 v-for="book in books" v-bind:key="book.id">
+      <v-layout row wrap>
+        <v-flex xs12 sm4 md3 v-for="book in books" v-bind:key="book.id">
           <v-card>
-            <v-card-media src="https://qph.ec.quoracdn.net/main-qimg-050a22aa0cf612a61608b9c0d0cb13a2.webp"
-                          height="200px">
+            <v-card-media :src="book.image" height="180px">
             </v-card-media>
-            <v-card-title primary-title>
+            <v-list two-line class="pb-0">
+              <v-list-tile>
+                <v-list-tile-content>
+                  <v-list-tile-title v-html="book.title"></v-list-tile-title>
+                  <v-list-tile-sub-title v-html="'by ' + book.author + ', ' + book.editionYear"></v-list-tile-sub-title>
+                </v-list-tile-content>
+              </v-list-tile>
+            </v-list>
+            <v-card-text class="pt-0 pb-0">
               <div>
-                <h3 class="headline mb-0">{{book.title}}</h3>
-                <!--<div>Located two hours south of Sydney in the <br>Southern Highlands of New South Wales, ...</div>-->
+                <p v-html="book.content"></p>
               </div>
-            </v-card-title>
-            <v-card-actions>
-              <v-btn flat>Share</v-btn>
-              <v-btn flat>View</v-btn>
-            </v-card-actions>
+            </v-card-text>
+            <div class="pt-0 text-xs-center text-sm-center text-md-center text-lg-center text-xl-center">
+              <v-btn round color="primary" dark>see all</v-btn>
+            </div>
           </v-card>
         </v-flex>
       </v-layout>
@@ -25,13 +30,14 @@
 </template>
 
 <script>
+  import {bookService} from '../../../../api/book.service'
+
   export default {
     name: 'Home',
     computed: {
       books () {
-        let books = []
-        books.push({id: 1, title: 'Book 1'})
-        return books
+        // return bookService.getBooks()
+        return bookService.getBooksByTitle('Eminescu')
       }
     }
   }
