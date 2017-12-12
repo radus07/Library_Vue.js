@@ -1,9 +1,25 @@
 <template>
   <v-toolbar fixed color="white" dense>
     <router-link :to="{ name: 'library.home', }"><img src="https://qph.ec.quoracdn.net/main-qimg-050a22aa0cf612a61608b9c0d0cb13a2.webp" alt="logo" width="50px"></router-link>
-    <v-spacer></v-spacer>
-    <v-toolbar-items v-if="!user.isLogged">
-      <v-btn flat exact :to="{ name: 'library.sign_in' }">Sign In</v-btn>
+    <v-spacer class="search-input-spacer-before"></v-spacer>
+    <v-text-field class="search-input" solo clearable prepend-icon="search" label="Search"></v-text-field>
+    <v-spacer class="search-input-spacer-after"></v-spacer>
+    <v-menu class="hidden-md-and-up">
+      <v-btn icon slot="activator">
+        <v-icon>menu</v-icon>
+      </v-btn>
+      <v-list>
+        <v-list-tile>
+          <v-list-tile-content>
+            <v-list-tile-title><router-link :to="{ name: 'library.sign_in' }">SIGN IN</router-link></v-list-tile-title>
+            <v-list-tile-title><router-link :to="{ name: 'library.register' }">REGISTER</router-link></v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+
+    </v-menu>
+    <v-toolbar-items class="hidden-sm-and-down" v-if="!user.isLogged">
+      <v-btn flat :to="{ name: 'library.sign_in' }">Sign In</v-btn>
       <v-btn flat :to="{ name: 'library.register' }">Register</v-btn>
     </v-toolbar-items>
     <v-menu offset-y v-if="user.isLogged">
@@ -52,7 +68,34 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.toolbar-user-action-btn {
-  text-transform: none!important;
-}
+  .toolbar-user-action-btn {
+    text-transform: none !important;
+  }
+
+  .search-input-spacer-before {
+    flex-grow: 0.06!important;
+  }
+
+  .search-input-spacer-after {
+    flex-grow: 0.5!important;
+  }
+
+  .search-input {
+    box-shadow: 0 0 2px 1px rgb(255, 255, 255);
+    background-color: #e8e8e8;
+
+    min-height: 32px;
+    height: 32px;
+    max-width: 800px!important;
+    width: 800px!important;
+
+    /deep/ label {
+      top: 2px!important;
+    }
+  }
+
+  .search-input.input-group--focused {
+    background-color: white;
+    box-shadow: 0 1px 2px 1px rgb(203, 203, 203);
+  }
 </style>
