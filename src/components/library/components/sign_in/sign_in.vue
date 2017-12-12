@@ -1,67 +1,66 @@
 <template>
-  <v-content>
-    <v-container grid-list-xs fill-height>
-      <v-layout row wrap align-center>
-        <v-flex xs12 sm4 offset-sm4>
-          <v-alert class="login-error" color="error" icon="error" value="true" v-if="hasErrors">
-            Invalid username or password
-          </v-alert>
-          <v-card>
-            <v-card-title style="background-color: #f5f5f5; color: rgba(0,0,0,.54)" primary-title>
-              <h3 class="headline mb-0">Sign in</h3>
-            </v-card-title>
-            <v-card-actions>
-              <form @submit.prevent="submit()">
-                <!--
-                  * Add more possibilities
-                 -->
-                <v-container grid-list-xs>
-                  <v-layout wrap>
-                    <v-flex xs12>
-                      <v-text-field
-                        label="Username*"
-                        v-model="user.username"
-                        :error-messages="nameErrors"
-                        @input="$v.user.username.$touch()"
-                        @blur="$v.user.username.$touch()"
-                        prepend-icon="person"
-                      ></v-text-field>
-                    </v-flex>
-                    <v-flex xs12>
-                      <v-text-field
-                        label="Password*"
-                        v-model="user.password"
-                        :error-messages="passwordErrors"
-                        @input="$v.user.password.$touch()"
-                        @blur="$v.user.password.$touch()"
-                        :append-icon="showPassword ? 'visibility_off' : 'visibility'"
-                        :append-icon-cb="() => showPassword = !showPassword"
-                        :type="showPassword ? 'text' : 'password'"
-                        prepend-icon="lock"
-                      ></v-text-field>
-                    </v-flex>
-                  </v-layout>
-                  <v-card-actions>
-                    <v-btn @click="" flat class="forgot-password-link">Forgot password?</v-btn>
-                    <v-spacer></v-spacer>
-                    <v-btn :type="'submit'" color="primary">Sign in</v-btn>
-                  </v-card-actions>
-                </v-container>
-              </form>
-            </v-card-actions>
-          </v-card>
-        </v-flex>
-      </v-layout>
-    </v-container>
-  </v-content>
+  <v-container grid-list-xs fill-height>
+    <v-layout row wrap align-center>
+      <v-flex xs12 sm4 offset-sm4>
+        <v-alert class="login-error" color="error" icon="error" value="true" v-if="hasErrors">
+          Invalid username or password
+        </v-alert>
+        <v-card>
+          <v-card-title style="background-color: #f5f5f5; color: rgba(0,0,0,.54)" primary-title>
+            <h3 class="headline mb-0">Sign in</h3>
+          </v-card-title>
+          <v-card-actions>
+            <form @submit.prevent="submit()">
+              <!--
+                * Add more possibilities
+               -->
+              <v-container grid-list-xs>
+                <v-layout wrap>
+                  <v-flex xs12>
+                    <v-text-field
+                      label="Username*"
+                      v-model="user.username"
+                      :error-messages="nameErrors"
+                      @input="$v.user.username.$touch()"
+                      @blur="$v.user.username.$touch()"
+                      prepend-icon="person"
+                    ></v-text-field>
+                  </v-flex>
+                  <v-flex xs12>
+                    <v-text-field
+                      label="Password*"
+                      v-model="user.password"
+                      :error-messages="passwordErrors"
+                      @input="$v.user.password.$touch()"
+                      @blur="$v.user.password.$touch()"
+                      :append-icon="showPassword ? 'visibility_off' : 'visibility'"
+                      :append-icon-cb="() => showPassword = !showPassword"
+                      :type="showPassword ? 'text' : 'password'"
+                      prepend-icon="lock"
+                    ></v-text-field>
+                  </v-flex>
+                </v-layout>
+                <v-card-actions>
+                  <v-btn @click="" flat class="forgot-password-link">Forgot password?</v-btn>
+                  <v-spacer></v-spacer>
+                  <v-btn :type="'submit'" color="primary">Sign in</v-btn>
+                </v-card-actions>
+              </v-container>
+            </form>
+          </v-card-actions>
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
   import { validationMixin } from 'vuelidate'
   import { required, maxLength } from 'vuelidate/lib/validators'
-  import { authService } from '../../../../api/auth.service.js'
+  import { authService } from '../../../../api'
 
   export default {
+    name: 'SignIn',
     mixins: [validationMixin],
     validations: {
       user: {

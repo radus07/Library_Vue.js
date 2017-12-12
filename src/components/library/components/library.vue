@@ -1,9 +1,9 @@
 <template>
   <v-app>
     <toolbar></toolbar>
-    <main>
+    <v-content>
       <router-view></router-view>
-    </main>
+    </v-content>
     <page-footer></page-footer>
   </v-app>
 </template>
@@ -27,18 +27,18 @@
     background-color: white;
     overflow-y: hidden;
 
-    main {
+    .content--wrap {
       height: calc(100% - 84px);
-      margin-top: 48px;
-      background-color: white;
 
       .content {
-        overflow-y: auto;
-        max-width: 1185px;
-        margin: 0 auto;
+        background-color: white;
+        margin-top: 48px;
 
         .container {
-          max-width: 100%;
+          overflow-y: auto;
+          height: 100%;
+          max-width: 1185px;
+          margin: 0 auto;
         }
       }
     }
