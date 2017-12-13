@@ -11,14 +11,15 @@
       <v-list>
         <v-list-tile>
           <v-list-tile-content>
+            <v-list-tile-title><router-link :to="{ name: 'library.books' }">BOOKS</router-link></v-list-tile-title>
             <v-list-tile-title><router-link :to="{ name: 'library.sign_in' }">SIGN IN</router-link></v-list-tile-title>
             <v-list-tile-title><router-link :to="{ name: 'library.register' }">REGISTER</router-link></v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
-
     </v-menu>
     <v-toolbar-items class="hidden-sm-and-down" v-if="!user.isLogged">
+      <v-btn flat :to="{ name: 'library.books' }">Books</v-btn>
       <v-btn flat :to="{ name: 'library.sign_in' }">Sign In</v-btn>
       <v-btn flat :to="{ name: 'library.register' }">Register</v-btn>
     </v-toolbar-items>
