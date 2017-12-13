@@ -24,19 +24,17 @@
 <style lang="scss">
   #app {
     height: 100%;
-    background-color: white;
+    background-color: #ffffff;
     overflow-y: hidden;
 
     .content--wrap {
       height: calc(100% - 84px);
 
       .content {
-        background-color: white;
         margin-top: 48px;
+        overflow-y: auto;
 
         .container {
-          overflow-y: auto;
-          height: 100%;
           max-width: 1185px;
           margin: 0 auto;
         }
