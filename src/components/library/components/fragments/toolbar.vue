@@ -4,26 +4,36 @@
     <v-spacer class="search-input-spacer-before"></v-spacer>
     <v-text-field class="search-input" solo clearable prepend-icon="search" label="Search"></v-text-field>
     <v-spacer class="search-input-spacer-after"></v-spacer>
+    <!-- Display when size is less than 960px -->
     <v-menu class="hidden-md-and-up">
       <v-btn icon slot="activator">
         <v-icon>menu</v-icon>
       </v-btn>
       <v-list>
-        <v-list-tile>
-          <v-list-tile-content>
-            <v-list-tile-title><router-link :to="{ name: 'library.books' }">BOOKS</router-link></v-list-tile-title>
-            <v-list-tile-title><router-link :to="{ name: 'library.sign_in' }">SIGN IN</router-link></v-list-tile-title>
-            <v-list-tile-title><router-link :to="{ name: 'library.register' }">REGISTER</router-link></v-list-tile-title>
-          </v-list-tile-content>
+        <v-list-tile :to="{ name: 'library.books' }">
+          <v-list-tile-title>Books</v-list-tile-title>
+        </v-list-tile>
+        <v-list-tile :to="{ name: 'library.sign_in' }" v-if="!user.isLogged">
+          <v-list-tile-title>Sign in</v-list-tile-title>
+        </v-list-tile>
+        <v-list-tile :to="{ name: 'library.register' }" v-if="!user.isLogged">
+          <v-list-tile-title>Register</v-list-tile-title>
+        </v-list-tile>
+        <v-list-tile @click="" v-if="user.isLogged">
+          <v-list-tile-title>My Account</v-list-tile-title>
+        </v-list-tile>
+        <v-list-tile @click="logout()" v-if="user.isLogged">
+          <v-list-tile-title>Sign out</v-list-tile-title>
         </v-list-tile>
       </v-list>
     </v-menu>
-    <v-toolbar-items class="hidden-sm-and-down" v-if="!user.isLogged">
+    <!-- Display when size is higher than 960px -->
+    <v-toolbar-items class="hidden-sm-and-down">
       <v-btn flat :to="{ name: 'library.books' }">Books</v-btn>
-      <v-btn flat :to="{ name: 'library.sign_in' }">Sign In</v-btn>
-      <v-btn flat :to="{ name: 'library.register' }">Register</v-btn>
+      <v-btn flat :to="{ name: 'library.sign_in' }" v-if="!user.isLogged">Sign In</v-btn>
+      <v-btn flat :to="{ name: 'library.register' }" v-if="!user.isLogged">Register</v-btn>
     </v-toolbar-items>
-    <v-menu offset-y v-if="user.isLogged">
+    <v-menu offset-y v-if="user.isLogged" class="hidden-sm-and-down">
       <v-btn fab dark small color="primary" slot="activator">U</v-btn>
       <v-card class="toolbar-user-menu">
         <v-card-title primary-title>
