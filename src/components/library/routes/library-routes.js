@@ -39,13 +39,13 @@ const libraryRoutes = [
             path: '',
             name: 'library.books',
             component: BookList,
-            meta: {title: 'Books', authenticated: false}
+            meta: {title: 'Books'}
           },
           {
             path: ':id',
             name: 'library.book',
             component: BookDetails,
-            meta: {title: 'Book Details', authenticated: false}
+            meta: {title: 'Book Details'}
           }
         ]
       }

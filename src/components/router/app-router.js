@@ -22,7 +22,9 @@ export default appRouter
 
 let doGuard = (to, from, next) => {
   let user = store.getters['auth/getUserDetails']
-  if (to.meta.authenticated) {
+  if (to.meta.authenticated === undefined) {
+    next()
+  } else if (to.meta.authenticated) {
     if (user.isLogged) {
       next()
     } else {
