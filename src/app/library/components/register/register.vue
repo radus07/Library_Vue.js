@@ -90,7 +90,7 @@
 </template>
 
 <script>
-  import {registrationService, authService} from '../../../../api'
+  import {registrationService, authService} from '../../../api/index'
 
   export default {
     name: 'Register',

@@ -57,7 +57,7 @@
 <script>
   import { validationMixin } from 'vuelidate'
   import { required, maxLength } from 'vuelidate/lib/validators'
-  import { authService } from '../../../../api'
+  import { authService } from '../../../api/index'
 
   export default {
     name: 'SignIn',

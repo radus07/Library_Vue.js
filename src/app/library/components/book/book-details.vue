@@ -11,7 +11,7 @@
 </template>
 
 <script>
-  import {bookService} from '../../../../api'
+  import {bookService} from '../../../api/index'
 
   export default {
     name: 'BookDetails',
