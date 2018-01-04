@@ -9,8 +9,8 @@
 </template>
 
 <script>
-  import Toolbar from './fragments/toolbar'
-  import PageFooter from './fragments/page_footer'
+  import Toolbar from './fragments/toolbar/toolbar'
+  import PageFooter from './fragments/footer/page_footer'
 
   export default {
     name: 'Library',
