@@ -28,15 +28,12 @@ let doGuard = (to, from, next) => {
     if (user.isLogged) {
       next()
     } else {
-      // Alert user must be logged
-      console.log('you must be logged')
+      store.dispatch('auth/setUnauthorized', {isUnauthorized: true, path: to.path})
       setDocumentTitle(from)
       next({name: 'library.sign_in'})
     }
   } else {
     if (user.isLogged) {
-      // Alert user must be logged out
-      console.log('you must be logged out')
       next({name: 'library.home'})
     } else {
       next()

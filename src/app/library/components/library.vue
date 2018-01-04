@@ -15,8 +15,8 @@
   export default {
     name: 'Library',
     components: {
-      'toolbar': Toolbar,
-      'page-footer': PageFooter
+      Toolbar,
+      PageFooter
     }
   }
 </script>

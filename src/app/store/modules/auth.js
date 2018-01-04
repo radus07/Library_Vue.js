@@ -1,7 +1,8 @@
 import { myUserService } from '../../api/user.service'
 
 const state = {
-  user: {}
+  user: {},
+  unauthorized: {}
 }
 
 const mutations = {
@@ -11,6 +12,9 @@ const mutations = {
         state.user = (response) ? {isLogged: !!localStorage.getItem('user'), details: response}
           : state.user = {isLogged: !!localStorage.getItem('user')}
       })
+  },
+  setUnauthorized (state, data) {
+    state.unauthorized = data.data
   }
 }
 
@@ -20,12 +24,18 @@ const actions = {
       commit('setUser')
       resolve()
     })
+  },
+  setUnauthorized ({commit}, data) {
+    commit('setUnauthorized', {data})
   }
 }
 
 const getters = {
   getUserDetails (state) {
     return state.user
+  },
+  getUnauthorized (state) {
+    return state.unauthorized
   }
 }
 
