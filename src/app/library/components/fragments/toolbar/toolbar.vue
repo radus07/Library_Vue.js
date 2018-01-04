@@ -1,6 +1,6 @@
 <template>
   <v-toolbar fixed color="white" dense>
-    <router-link :to="{ name: 'library.home', }"><img src="https://qph.ec.quoracdn.net/main-qimg-050a22aa0cf612a61608b9c0d0cb13a2.webp" alt="logo" width="50px"></router-link>
+    <router-link :to="{ name: 'library.home' }"><img src="https://qph.ec.quoracdn.net/main-qimg-050a22aa0cf612a61608b9c0d0cb13a2.webp" alt="logo" width="50px"></router-link>
     <v-spacer class="search-input-spacer-before"></v-spacer>
     <v-text-field class="search-input" solo clearable prepend-icon="search" label="Search"></v-text-field>
     <v-spacer class="search-input-spacer-after"></v-spacer>
@@ -93,7 +93,7 @@ export default {
 
   .search-input {
     box-shadow: 0 0 2px 1px rgb(255, 255, 255);
-    background-color: #e8e8e8;
+    background-color: #e8e8e8 !important;
 
     min-height: 32px;
     height: 32px;
@@ -106,7 +106,7 @@ export default {
   }
 
   .search-input.input-group--focused {
-    background-color: white;
+    background-color: white !important;
     box-shadow: 0 1px 2px 1px rgb(203, 203, 203);
   }
 </style>
