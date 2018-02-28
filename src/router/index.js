@@ -1,16 +1,16 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import libraryRoutes from '../library/routes/library-routes'
+import libraryRoutes from './library-routes'
 import store from '../store/index'
 
 Vue.use(Router)
 
-const appRouter = new Router({
+const router = new Router({
   mode: 'history',
   routes: libraryRoutes
 })
 
-appRouter.beforeEach((to, from, next) => {
+router.beforeEach((to, from, next) => {
   store.dispatch('auth/updateUserDetails')
     .then(() => {
       setDocumentTitle(to)
@@ -18,7 +18,7 @@ appRouter.beforeEach((to, from, next) => {
     })
 })
 
-export default appRouter
+export default router
 
 let doGuard = (to, from, next) => {
   let user = store.getters['auth/getUserDetails']

@@ -9,8 +9,8 @@
 </template>
 
 <script>
-  import Toolbar from './fragments/toolbar/toolbar'
-  import PageFooter from './fragments/footer/page_footer'
+  import Toolbar from '../components/common/toolbar/toolbar'
+  import PageFooter from '../components/common/footer/page_footer'
 
   export default {
     name: 'Library',
@@ -27,10 +27,10 @@
     background-color: #ffffff;
     overflow-y: hidden;
 
-    .content--wrap {
+    .content {
       height: calc(100% - 84px);
 
-      .content {
+      .content--wrap {
         margin-top: 48px;
         overflow-y: auto;
 

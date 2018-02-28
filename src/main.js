@@ -2,10 +2,11 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import Vuetify from 'vuetify'
-import App from './app/App'
+import App from './App'
 import VeeValidate from 'vee-validate'
-import router from './app/router/app-router'
-import store from './app/store'
+import router from './router'
+import store from './store'
+import 'vuetify/dist/vuetify.min.css'
 
 Vue.config.productionTip = false
 Vue.use(Vuetify)
@@ -13,9 +14,8 @@ Vue.use(VeeValidate)
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
   router,
   store,
   template: '<App/>',
   components: { App }
-})
+}).$mount('#app')

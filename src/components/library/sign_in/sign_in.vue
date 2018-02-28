@@ -59,7 +59,7 @@
   import { validationMixin } from 'vuelidate'
   import { required, maxLength } from 'vuelidate/lib/validators'
   import { authService } from '../../../api/index'
-  import Unauthorized from '../fragments/unauthorized/unauthorized'
+  import Unauthorized from '../../common/unauthorized/unauthorized'
 
   export default {
     name: 'SignIn',
