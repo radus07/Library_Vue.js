@@ -12,18 +12,16 @@
           </v-card-title>
           <v-card-actions>
             <form @submit.prevent="submit()">
-              <!--
-                * Add more possibilities
-               -->
               <v-container grid-list-xs>
                 <v-layout wrap>
                   <v-flex xs12>
                     <v-text-field
                       label="Username*"
                       v-model="user.username"
-                      :error-messages="nameErrors"
-                      @input="$v.user.username.$touch()"
-                      @blur="$v.user.username.$touch()"
+                      :error-messages="errors.collect('Username')"
+                      v-validate="'required|max:15'"
+                      data-vv-name="Username"
+                      maxlength="15"
                       prepend-icon="person"
                     ></v-text-field>
                   </v-flex>
@@ -31,9 +29,9 @@
                     <v-text-field
                       label="Password*"
                       v-model="user.password"
-                      :error-messages="passwordErrors"
-                      @input="$v.user.password.$touch()"
-                      @blur="$v.user.password.$touch()"
+                      :error-messages="errors.collect('Password')"
+                      v-validate="'required'"
+                      data-vv-name="Password"
                       :append-icon="showPassword ? 'visibility_off' : 'visibility'"
                       :append-icon-cb="() => showPassword = !showPassword"
                       :type="showPassword ? 'text' : 'password'"
@@ -56,63 +54,40 @@
 </template>
 
 <script>
-  import { validationMixin } from 'vuelidate'
-  import { required, maxLength } from 'vuelidate/lib/validators'
   import { authService } from '@/api'
   import UnauthorizedUser from '@/components/common/UnauthorizedUser'
 
   export default {
     name: 'sign-in',
-    mixins: [validationMixin],
-    components: {
-      UnauthorizedUser
-    },
-    validations: {
-      user: {
-        username: {required, maxLength: maxLength(10)},
-        password: {required}
-      }
-    },
     data () {
       return {
-        user: {},
+        user: {username: '', password: ''},
         showPassword: false,
         hasErrors: false
       }
     },
     methods: {
       submit () {
-        if (this.$v.$invalid) {
-          this.$v.$touch()
-        } else {
-          authService.checkAuthentication(this.user)
-            .then((response) => {
-              authService.loginUser(response)
-                .then(() => {
-                  this.$store.commit('auth/setUser')
-                  this.$router.push({name: 'library.home'})
+        this.$validator.validateAll()
+          .then(() => {
+            if (this.$validator.errors.items.length === 0) {
+              authService.checkAuthentication(this.user)
+                .then((response) => {
+                  authService.loginUser(response)
+                    .then(() => {
+                      this.$store.commit('auth/setUser')
+                      this.$router.push({name: 'library.home'})
+                    })
                 })
-            })
-            .catch(() => {
-              this.hasErrors = true
-            })
-        }
+                .catch(() => {
+                  this.hasErrors = true
+                })
+            }
+          })
       }
     },
-    computed: {
-      nameErrors () {
-        const errors = []
-        if (!this.$v.user.username.$dirty) return errors
-        !this.$v.user.username.maxLength && errors.push('Username must be at most 10 characters long')
-        !this.$v.user.username.required && errors.push('Username is required.')
-        return errors
-      },
-      passwordErrors () {
-        const errors = []
-        if (!this.$v.user.password.$dirty) return errors
-        !this.$v.user.password.required && errors.push('Password is required')
-        return errors
-      }
+    components: {
+      UnauthorizedUser
     }
   }
 </script>
