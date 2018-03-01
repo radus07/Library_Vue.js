@@ -116,7 +116,7 @@
 
 <script>
   export default {
-    name: 'BookList',
+    name: 'book-list',
     computed: {
     }
   }

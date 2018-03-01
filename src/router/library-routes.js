@@ -1,10 +1,10 @@
 import Library from '@/views/library'
-import Home from '@/components/library/home/home'
-import SignIn from '@/components/library/sign_in/sign_in'
-import Register from '@/components/library/register/register'
-import Books from '@/components/library/book/books'
-import BookList from '@/components/library/book/book-list'
-import BookDetails from '@/components/library/book/book-details'
+import Home from '@/components/library/home/Home'
+import SignIn from '@/components/library/signIn/SignIn'
+import Register from '@/components/library/register/Register'
+import Books from '@/components/library/book/Books'
+import BookList from '@/components/library/book/BookList'
+import BookDetails from '@/components/library/book/BookDetails'
 
 const libraryRoutes = [
   {

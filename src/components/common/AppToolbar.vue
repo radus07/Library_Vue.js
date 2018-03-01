@@ -62,7 +62,7 @@
 
 <script>
 export default {
-  name: 'Toolbar',
+  name: 'app-toolbar',
   methods: {
     logout () {
       localStorage.removeItem('user')

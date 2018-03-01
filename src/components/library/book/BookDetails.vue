@@ -14,7 +14,7 @@
   import {bookService} from '../../../api/index'
 
   export default {
-    name: 'BookDetails',
+    name: 'book-details',
     computed: {
       books () {
         // return bookService.getBooks()

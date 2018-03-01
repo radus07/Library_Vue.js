@@ -31,7 +31,7 @@
   import {bookService} from '../../../api/index'
 
   export default {
-    name: 'Home',
+    name: 'home',
     computed: {
       books () {
         // return bookService.getBooks()

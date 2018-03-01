@@ -24,7 +24,7 @@
 
 <script>
   export default {
-    name: 'Unauthorized',
+    name: 'unauthorized-user',
     data () {
       return {
         showUnauthorizedSnack: true

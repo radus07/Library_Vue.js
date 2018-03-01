@@ -6,7 +6,7 @@
 </template>
 <script>
 export default {
-  name: 'PageFooter'
+  name: 'app-footer'
 }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <v-container grid-list-xs fill-height>
-    <unauthorized></unauthorized>
+    <unauthorized-user></unauthorized-user>
     <v-layout row wrap align-center>
       <v-flex xs12 sm4 offset-sm4>
         <v-alert class="login-error" color="error" icon="error" value="true" v-if="hasErrors">
@@ -58,14 +58,14 @@
 <script>
   import { validationMixin } from 'vuelidate'
   import { required, maxLength } from 'vuelidate/lib/validators'
-  import { authService } from '../../../api/index'
-  import Unauthorized from '../../common/unauthorized/unauthorized'
+  import { authService } from '@/api'
+  import UnauthorizedUser from '@/components/common/UnauthorizedUser'
 
   export default {
-    name: 'SignIn',
+    name: 'sign-in',
     mixins: [validationMixin],
     components: {
-      Unauthorized
+      UnauthorizedUser
     },
     validations: {
       user: {

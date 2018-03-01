@@ -1,22 +1,22 @@
 <template>
   <v-app>
-    <toolbar></toolbar>
+    <app-toolbar></app-toolbar>
     <v-content>
       <router-view></router-view>
     </v-content>
-    <page-footer></page-footer>
+    <app-footer></app-footer>
   </v-app>
 </template>
 
 <script>
-  import Toolbar from '../components/common/toolbar/toolbar'
-  import PageFooter from '../components/common/footer/page_footer'
+  import AppToolbar from '@/components/common/AppToolbar'
+  import AppFooter from '@/components/common/AppFooter'
 
   export default {
-    name: 'Library',
+    name: 'library',
     components: {
-      Toolbar,
-      PageFooter
+      AppToolbar,
+      AppFooter
     }
   }
 </script>
